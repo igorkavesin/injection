@@ -1,0 +1,19 @@
+
+
+.mat-sidenav-container {
+  background-color: white !important;
+  height: 100vh;
+  box-shadow: 0 1px 3px 0#8192ea ,0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px #8192ea;
+
+  .mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mat-sidenav {
+  width: 300px;
+  border-right: 5px solid #1f2770 !important;
+}
+
+
