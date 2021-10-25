@@ -4,7 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared/format-datepicker';
-import * as moment from 'moment';
+import { IForm } from '../../../shared/interface/iform';
 
 @Component({
   selector: 'app-mois',
@@ -29,6 +29,19 @@ export class MoisComponent implements OnInit {
   constructor() {
 
   }
+
+  public getValueFromInputApi(): IForm {
+    return {
+      callValueFromInput: (name) => {
+        return this.getValueFromInput(name);
+      }
+    };
+  }
+
+  public getValueFromInput(name: string): string {
+    return 'ERROR';
+  }
+
 
   ngOnInit(): void {
   }

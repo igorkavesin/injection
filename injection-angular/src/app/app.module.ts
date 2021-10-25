@@ -17,6 +17,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { WsDescriptionComponent } from './ws/generer-injection-comptable/ws-description/ws-description.component';
 import { GenererInjectionComptableComponent } from './ws/generer-injection-comptable/generer-injection-comptable.companent';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonsTestClearComponent } from './shared/components/buttons-test-clear.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     WsDescriptionComponent,
-    GenererInjectionComptableComponent
+    GenererInjectionComptableComponent,
+    ButtonsTestClearComponent
   ],
   imports: [
     MaterialModule,

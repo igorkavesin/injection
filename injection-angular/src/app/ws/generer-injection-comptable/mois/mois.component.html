@@ -36,10 +36,14 @@
   <mat-icon matSuffix>swap_horiz</mat-icon>  Provisoire: <mat-checkbox formControlName="pepperoni"> </mat-checkbox>
 </div>
 
-<div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
+<div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);"></div>
 
-<button mat-raised-button color="primary" style="margin:5px;"><mat-icon> mail_outline</mat-icon>ENVOYER</button>
-<button mat-raised-button color="accent" style="margin:5px;"><mat-icon>delete_sweep</mat-icon>EFFACER</button>
-</div>
+<div class="div-both"> </div>
+    <app-buttons-test-clear  
+      [form]="form" 
+      [formApi]="getValueFromInputApi()"> 
+    </app-buttons-test-clear>
+
+
 
 </form>
