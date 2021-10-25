@@ -11,14 +11,14 @@
 
     <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px; width: 40%;">
       <mat-label>Annee: </mat-label>
-      <input matInput placeholder="YYYY">
+      <input matInput placeholder="YYYY" formControlName="annee" required>
       <mat-icon matSuffix>calendar_today</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
 
     <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px; width: 40%;">
       <mat-label>Mois: </mat-label>
-      <input matInput placeholder="MM">
+      <input matInput placeholder="MM" formControlName="mois" required>
       <mat-icon matSuffix>event</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
@@ -26,14 +26,14 @@
 
     <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
       <mat-label>ID utilisateur:  </mat-label>
-      <input matInput placeholder="NUMBER">
+      <input matInput placeholder="NUMBER" formControlName="id_utilisateur" required>
       <mat-icon matSuffix>perm_identity</mat-icon>
       <mat-hint>Hint</mat-hint>
     </mat-form-field>
 
 <div style="clear:both"></div>
 <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
-  <mat-icon matSuffix>swap_horiz</mat-icon>  Provisoire: <mat-checkbox formControlName="pepperoni"> </mat-checkbox>
+  <mat-icon matSuffix>swap_horiz</mat-icon>  Provisoire: <mat-checkbox formControlName="provisoire"> </mat-checkbox>
 </div>
 
 <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);"></div>
