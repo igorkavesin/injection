@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "injection-angular"
+  "defaultProject": "injection-angular",
+  "cli": {
+    "analytics": "cdda60d1-f588-48ef-b607-ff6a36075c5d"
+  }
 }
