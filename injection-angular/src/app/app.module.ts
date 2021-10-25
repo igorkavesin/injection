@@ -18,6 +18,7 @@ import { WsDescriptionComponent } from './ws/generer-injection-comptable/ws-desc
 import { GenererInjectionComptableComponent } from './ws/generer-injection-comptable/generer-injection-comptable.companent';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsTestClearComponent } from './shared/components/buttons-test-clear.component';
+import { ProgressBarComponent } from './shared/components/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ButtonsTestClearComponent } from './shared/components/buttons-test-clea
     FooterComponent,
     WsDescriptionComponent,
     GenererInjectionComptableComponent,
+    ProgressBarComponent,
     ButtonsTestClearComponent
   ],
   imports: [

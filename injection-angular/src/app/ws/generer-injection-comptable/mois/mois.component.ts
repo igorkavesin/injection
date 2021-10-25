@@ -27,7 +27,6 @@ export class MoisComponent implements OnInit {
   });
 
   constructor() {
-
   }
 
   public getValueFromInputApi(): IForm {
