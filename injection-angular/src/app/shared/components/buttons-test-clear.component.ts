@@ -7,6 +7,7 @@ import { IForm } from '../interface/iform';
 @Component({
   selector: 'app-buttons-test-clear',
   template: `
+    <app-progress-bar [loading]="loading"></app-progress-bar>
     <button mat-raised-button color="primary" style="margin:5px;"
       (click)="btnSend()"
       class="submit-button"
@@ -24,16 +25,14 @@ import { IForm } from '../interface/iform';
 })
 export class ButtonsTestClearComponent implements OnInit {
 
-  @Input() public btnHiteClear: boolean= false;
+  @Input() public btnHiteClear: boolean = false;
   @Input() public btnName: string | undefined;
   @Input() public form: FormGroup = new FormGroup({});
   @Input() public formApi: IForm | undefined;
 
   @ViewChild('send', {read: ElementRef, static: false}) public send: ElementRef | undefined;
-
-
-  public loading = false;
-  private path: string = '';
+  public loading: boolean = false;
+  public path: string = "";
 
   constructor() { 
   }
@@ -42,12 +41,15 @@ export class ButtonsTestClearComponent implements OnInit {
   }
 
   private doRequest(): void {
-  
     alert(" doRequest ");
+
+    this.loading = false;
   }
 
   public btnSend() {
-    alert(" btnSend ");
+    alert(" BLOCAGE ");
+
+    this.loading = true;
   }
 
   public btnClear(): void {
