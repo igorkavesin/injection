@@ -19,6 +19,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MoisComponent implements OnInit {
 
+  public err_annee: string ="";
+
+  @Input() public hint: boolean | undefined;
   public form = this.fb.group({
 
     annee: [null, [Validators.required, Validators.pattern('^[0-9]{4}')]],
@@ -26,6 +29,18 @@ export class MoisComponent implements OnInit {
     id_utilisateur: [null, [Validators.required, Validators.pattern('^[0-9]{2,10}')]],
     provisoire: [null],
   });
+
+  autoRenew = new FormControl();
+  onChange() {
+    console.log(this.autoRenew.value + " " + this.form.controls.annee.value );
+
+    if( this.autoRenew.value || this.form.controls.annee.value === 'null' ) {
+      this.err_annee = ' ooooo ';
+
+    }
+  }
+
+
 
 
   // form = new FormGroup({
@@ -43,12 +58,12 @@ export class MoisComponent implements OnInit {
     //   id_utilisateur: [null, [Validators.required]],
     //   provisoire: [null],
     // });
-     
+
 
   }
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     public dialog: MatDialog
   ) { }
 
@@ -65,6 +80,6 @@ export class MoisComponent implements OnInit {
   }
 
 
-   
+
 
 }

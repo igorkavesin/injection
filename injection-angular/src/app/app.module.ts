@@ -19,6 +19,7 @@ import { GenererInjectionComptableComponent } from './ws/generer-injection-compt
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsTestClearComponent } from './shared/components/buttons-test-clear.component';
 import { ProgressBarComponent } from './shared/components/progress-bar.component';
+import { SlideToggleErrorComponent } from './shared/components/slide-toggle-error.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProgressBarComponent } from './shared/components/progress-bar.component
     WsDescriptionComponent,
     GenererInjectionComptableComponent,
     ProgressBarComponent,
-    ButtonsTestClearComponent
+    ButtonsTestClearComponent,
+    SlideToggleErrorComponent
   ],
   imports: [
     MaterialModule,
