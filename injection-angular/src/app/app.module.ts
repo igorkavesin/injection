@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsTestClearComponent } from './shared/components/buttons-test-clear.component';
 import { ProgressBarComponent } from './shared/components/progress-bar.component';
 import { SlideToggleErrorComponent } from './shared/components/slide-toggle-error.component';
+import { SimpleDialogComponent } from './shared/components/simple-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SlideToggleErrorComponent } from './shared/components/slide-toggle-erro
     GenererInjectionComptableComponent,
     ProgressBarComponent,
     ButtonsTestClearComponent,
-    SlideToggleErrorComponent
+    SlideToggleErrorComponent,
+    SimpleDialogComponent
   ],
   imports: [
     MaterialModule,

@@ -1,20 +1,31 @@
 <mat-card>
   <mat-tab-group>
 
-    <mat-tab label="Par mois">
+    <mat-tab label="1) Verrouillage des paiements">
         <div style="margin-bottom: 10px;"> </div>
         <app-mois></app-mois>
     </mat-tab>
 
-    <mat-tab label="Par semaine">
+    <mat-tab label="2) Vérification des AB incomplets">
         <div style="margin-bottom: 10px;"> </div>
         <app-semaine></app-semaine>
     </mat-tab>
 
-    <mat-tab label="WS Description">
+    <mat-tab label="3) Vérification des CB incomplets">
       <div style="margin-bottom: 10px;"> </div>
       <app-ws-description></app-ws-description>
     </mat-tab>
+
+    <mat-tab label="4) Génération du xls récapitulatif">
+      <div style="margin-bottom: 10px;"> </div>
+      <app-ws-description></app-ws-description>
+    </mat-tab>
+
+    <mat-tab label="4) Génération des fichiers d'injection">
+      <div style="margin-bottom: 10px;"> </div>
+      <app-ws-description></app-ws-description>
+    </mat-tab>
+
 
   </mat-tab-group>
 </mat-card>

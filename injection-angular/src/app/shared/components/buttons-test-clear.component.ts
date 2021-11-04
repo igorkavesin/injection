@@ -1,20 +1,21 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IForm } from '../interface/iform';
+import { SimpleDialogComponent } from './simple-dialog.component';
 
 
 
 @Component({
   selector: 'app-buttons-test-clear',
+  providers: [SimpleDialogComponent],
   template: `
     <app-progress-bar [loading]="loading"></app-progress-bar>
     <button mat-raised-button color="primary" style="margin:5px;"
-      (click)="btnSend()"
+      (click)="btnSend($event)"
       class="submit-button"
       #send
       [disabled]="form.invalid">
-      <mat-icon> mail_outline</mat-icon>
-      {{(btnName ? btnName : 'Tester')}}
+      <mat-icon> mail_outline</mat-icon> Tester
     </button>
 
     <button mat-raised-button color="ink-ripple" style="margin:5px;"
@@ -34,7 +35,11 @@ export class ButtonsTestClearComponent implements OnInit {
   public loading: boolean = false;
   public path: string = "";
 
-  constructor() { 
+  constructor(public d: SimpleDialogComponent) { 
+    if(true) {
+      // this.loading = true;
+      // this.d.openWindow("Bloqué par valeur 9");
+    }
   }
 
   ngOnInit() {
@@ -46,9 +51,11 @@ export class ButtonsTestClearComponent implements OnInit {
     this.loading = false;
   }
 
-  public btnSend() {
-    alert(" BLOCAGE ");
-
+  public btnSend(event : MouseEvent) {
+    console.log(event);
+    this.form.disable();
+    (event.target as HTMLButtonElement).disabled = true;
+    this.d.openWindow("Attendez s'il vous plait ");
     this.loading = true;
   }
 

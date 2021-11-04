@@ -9,18 +9,15 @@ export class SimpleDialogComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  openWindow(): void {
+  openWindow(massage: string | any): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.position ={
-      'top': '0',
-      'left':'0'
-    }
+    dialogConfig.position = { }
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       id: 1,
-      title: 'Dialog progress...' 
+      title: massage 
     }
 
     let dial = this.dialog.open(DialogComponent, dialogConfig);
@@ -34,11 +31,15 @@ export class SimpleDialogComponent implements OnInit {
 
 @Component({
   template: `
-    <h1 mat-dialog-title>Certaines opérations ont été bloquées par le service d'envois #9!!! </h1>
-      <p style="color:red;"> 9) Bloquée </p>
-      <p style="color:red;"> 1) True </p>
-      <p style="color:red;"> 0) False </p>
-    <button class="mat-raised-button"(click)="closeDialog()">Close</button>
+    <h1 class="saving" mat-dialog-title>
+      
+    {{data.title}}
+    <span>.</span><span>.</span><span>.</span>
+  
+  </h1>
+    
+
+
   `,
 })
 export class DialogComponent { 
@@ -51,7 +52,7 @@ export class DialogComponent {
   closeDialog(): void {
     this.dialogRef.close();
     this.dialogRef.afterClosed().subscribe(
-      data => console.log("close DIALOG CLASS ", this.data) 
+      data => console.log("Dialog after close:", this.data) 
     );
   }
 }
