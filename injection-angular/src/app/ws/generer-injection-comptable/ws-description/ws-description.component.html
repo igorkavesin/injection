@@ -10,6 +10,26 @@
     <div class="mat-hint ng-star-inserted"><h2>Liste de paramètres</h2>
 
   </div>
+
+  
+INJECTION COMPTA - amélioration et automatisation de l'injection Pégase/Acropole par le social
+<br><br>
+Description
+Permettre d'effectuer l'injection comptable directement depuis Sociabili en effectuant les tâches ci-dessous (sans compte pour le moment la correction des tiers):
+    <br><br>
+    1 ). Blocage et déblocage des paiements concernés (via un ou plusieurs nouveau(x) WS) => mettre les paiements en PAIEMENT_EFFECTUE = 9
+    <br><br>
+    2 ). Contrôle divers à effectuer via un ou plusieurs WS (ex. test de l'existence d'un article budgétaire, d'un CB, d'un exercice budgétaire > à l'année en cours, ...)
+    <br><br>
+    3 ). Génération des listings/stats en fichier XLS (OK via les 3 ws "generer_stats_injection_comptable_par_criteres", "generer_stats_injection_comptable_par_semaine" et "generer_stats_injection_comptable_par_mois")
+    <br><br>
+    4 ). Génération des fichiers d'injections Pégase/Acropole (ATTENTION sans possibilité de finaliser l'injection comptable => mettre provisoire par défaut ou bien alors retirer cette option et ne jamais mettre le PAIEMENT_EFFECTUE = 1 dans ce WS)
+    <br><br>
+    5 ). Finaliser l'injection comptable après injection en PROD dans Pégase/Aropole (=> metttre PAIEMENT_EFFECTUE = 1)
+    <br><br>
+TODO: faire les sous-taches
+
+
   </mat-card-content>
 
 </mat-card>
