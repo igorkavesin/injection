@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IForm } from '../interface/iform';
+import { RequestService } from '../services/request.service';
 import { SimpleDialogComponent } from './simple-dialog.component';
 
 
@@ -33,9 +34,9 @@ export class ButtonsTestClearComponent implements OnInit {
 
   @ViewChild('send', {read: ElementRef, static: false}) public send: ElementRef | undefined;
   public loading: boolean = false;
-  public path: string = "";
+  public path: string | undefined;
 
-  constructor(public d: SimpleDialogComponent) { 
+  constructor(public d: SimpleDialogComponent, public req: RequestService ) { 
     if(true) {
       // this.loading = true;
       // this.d.openWindow("Bloqué par valeur 9");
@@ -52,10 +53,12 @@ export class ButtonsTestClearComponent implements OnInit {
   }
 
   public btnSend(event : MouseEvent) {
-    console.log(event);
+    this.path = this.formApi?.callValueFromInput('');
+
+    console.log(" this.path =>",  this.path );
     this.form.disable();
     (event.target as HTMLButtonElement).disabled = true;
-    this.d.openWindow("Attendez s'il vous plait ");
+    // this.d.openWindow("Attendez s'il vous plait ");
     this.loading = true;
   }
 
