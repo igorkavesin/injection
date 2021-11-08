@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SemaineComponent } from './ws/generer-injection-comptable/semaine/semaine.component';
-import { MoisComponent } from './ws/generer-injection-comptable/mois/mois.component';
+import { VerrouillageDesPaiementsComponent } from './ws/generer-injection-comptable/verrouillage-des-paiements/verrouillage-des-paiements.component';
 import { NgComponent } from './ng/ng.component';
 import { HomeComponent } from './home/home.component';
 import { MatSliderModule } from '@angular/material/slider';
 
 import { MaterialModule } from './material/material.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe, HashLocationStrategy, registerLocaleData  } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { WsDescriptionComponent } from './ws/generer-injection-comptable/ws-description/ws-description.component';
@@ -21,15 +21,21 @@ import { ButtonsTestClearComponent } from './shared/components/buttons-test-clea
 import { ProgressBarComponent } from './shared/components/progress-bar.component';
 import { SlideToggleErrorComponent } from './shared/components/slide-toggle-error.component';
 import { SimpleDialogComponent } from './shared/components/simple-dialog.component';
+import { RequestService } from './shared/services/request.service';
+
+ 
+
+import { HttpClientModule } from '@angular/common/http';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr-FR');
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
-
     SemaineComponent,
-    MoisComponent,
+    VerrouillageDesPaiementsComponent,
     NgComponent,
     HomeComponent,
     HeaderComponent,
@@ -49,9 +55,13 @@ import { SimpleDialogComponent } from './shared/components/simple-dialog.compone
     BrowserAnimationsModule,
     MatSliderModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RequestService,
+    { provide: JsonPipe, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
