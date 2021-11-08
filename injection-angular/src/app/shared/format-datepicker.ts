@@ -4,42 +4,40 @@ import {default as _rollupMoment, Moment} from 'moment';
 import { Injectable } from "@angular/core";
 
 const moment = _rollupMoment || _moment;
-
 @Injectable()
-export class AppDateAdapter extends NativeDateAdapter {
+export class AppDateYearMonthAdapter extends NativeDateAdapter {
 
   public format(inputDate: Date, displayFormat: Object): string {
     if (displayFormat === 'input') {
-      const dateFormat = 'YYYY-MM-DD';
+      const dateFormat = 'YYYY-MM';
       const toDateFormat = moment(inputDate).format(dateFormat);
       if (moment(toDateFormat, dateFormat, true).isValid()) {
         const d = toDateFormat.split('-');
         const year = d[0];
         const month = d[1];
-        const day = d[2];
-        return `${year}-${month}-${day}`;
+        return `${year}-${month}`;
       }
     }
     return inputDate.toDateString();
   }
 }
 
-export const APP_DATE_FORMATS: MatDateFormats = {
+export const APP_MODE_FORMATS_YEAR_MONTH: MatDateFormats = {
   parse: {
-    dateInput: { year: 'numeric', month: 'short', day: 'numeric' },
+    dateInput: 'YYYY-MM',
   },
   display: {
     dateInput: 'input',
-    monthYearLabel: { year: 'numeric', month: 'numeric'},
-    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
-    monthYearA11yLabel: { year: 'numeric', month: 'long' }
+    monthYearLabel: { year: 'numeric', month: 'numeric' },
+    dateA11yLabel: { year: 'numeric', month: 'short' },
+    monthYearA11yLabel: { year: 'numeric', month: 'short' }
   }
 };
 
 @Injectable()
-export class AppDateAdapterYear extends NativeDateAdapter {
+export class AppDateYearDayAdapter extends NativeDateAdapter {
   format(inputDate: Date, displayFormat: Object): string {
-    const dateFormat = 'YYYY';
+    const dateFormat = 'YYYY-DD';
     const toDateFormat = moment(inputDate).format(dateFormat);
     if (moment(toDateFormat, dateFormat, true).isValid()) {
       return moment(inputDate).format(dateFormat);
@@ -48,12 +46,12 @@ export class AppDateAdapterYear extends NativeDateAdapter {
   }
 }
 
-export const APP_MODE_FORMATS_YEAR: MatDateFormats = {
+export const APP_MODE_FORMATS_YEAR_DAY: MatDateFormats = {
   parse: {
-    dateInput: 'YYYY',
+    dateInput: 'YYYY-DD',
   },
   display: {
-    dateInput: 'YYYY',
+    dateInput: 'YYYY-DD',
     monthYearLabel: 'YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'YYYY',
