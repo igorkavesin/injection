@@ -22,7 +22,7 @@ import { ProgressBarComponent } from './shared/components/progress-bar.component
 import { SlideToggleErrorComponent } from './shared/components/slide-toggle-error.component';
 import { SimpleDialogComponent } from './shared/components/simple-dialog.component';
 import { RequestService } from './shared/services/request.service';
-
+import {MatRadioModule} from '@angular/material/radio'; 
  
 
 import { HttpClientModule } from '@angular/common/http';
@@ -56,7 +56,8 @@ registerLocaleData(localeFr, 'fr-FR');
     MatSliderModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule
   ],
   providers: [
     RequestService,
