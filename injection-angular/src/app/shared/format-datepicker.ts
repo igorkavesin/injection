@@ -22,6 +22,35 @@ export class AppDateYearMonthAdapter extends NativeDateAdapter {
   }
 }
 
+export const APP_MODE_FORMATS_YEAR: MatDateFormats = {
+  parse: {
+    dateInput: 'YYYY',
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: { year: 'numeric' },
+    dateA11yLabel: { year: 'numeric' },
+    monthYearA11yLabel: { year: 'numeric' }
+  }
+};
+
+@Injectable()
+export class AppDateYearAdapter extends NativeDateAdapter {
+  format(inputDate: Date, displayFormat: Object): string {
+    const dateFormat = 'YYYY';
+    const toDateFormat = moment(inputDate).format(dateFormat);
+    if (moment(toDateFormat, dateFormat, true).isValid()) {
+      return moment(inputDate).format(dateFormat);
+    }
+    alert( " inputDate => " + inputDate);
+    return inputDate.toDateString();
+  }
+}
+
+
+
+
+
 export const APP_MODE_FORMATS_YEAR_MONTH: MatDateFormats = {
   parse: {
     dateInput: 'YYYY-MM',

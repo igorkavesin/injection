@@ -27,6 +27,7 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -57,7 +58,8 @@ registerLocaleData(localeFr, 'fr-FR');
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule
   ],
   providers: [
     RequestService,

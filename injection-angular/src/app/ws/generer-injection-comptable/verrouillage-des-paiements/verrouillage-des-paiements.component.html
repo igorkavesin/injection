@@ -43,20 +43,37 @@
     </mat-radio-group>
   </div>
 
-  <!-- BEGINNING Datepicker Format -->
-  <!-- 
-  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
 
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="dated">
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp
+                    startView="multi-year"
+                    (yearSelected)="chosenYearHandler($event)"
+                    (monthSelected)="chosenMonthHandler($event, dp)"
+                    panelClass="example-month-picker">
+    </mat-datepicker>
+  </mat-form-field>
+
+
+  <!-- BEGINNING Datepicker Format -->
+   
+
+  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
     <mat-label>Annee et mois</mat-label>
     <input matInput 
       [matDatepicker]="picker" 
       formControlName="annee_mois" 
       (ngModelChange)="modelChanged($event)" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker disabled="false" startView="multi-year"></mat-datepicker>
+    <mat-datepicker 
+      #picker 
+      disabled="false"
+      startView="multi-year">
+  </mat-datepicker>
 
     <mat-hint *ngIf="hint" class="hint-error">
-      La valeur doit être en format numérique YYYY-MM.
+      La valeur doit être en format numérique YYYY.
     </mat-hint>
 
     <mat-hint *ngIf="!hint" class="hint-error">
@@ -64,7 +81,7 @@
     </mat-hint>
 
   </mat-form-field>
-  -->
+   
   <!-- END Datepicker Format -->
 
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
