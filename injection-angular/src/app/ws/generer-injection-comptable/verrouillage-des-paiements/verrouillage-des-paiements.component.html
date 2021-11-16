@@ -1,23 +1,43 @@
 <form [formGroup]="form">
 
+
+
+
+
+
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
     <app-slide-toggle-error (eventSlideToggle)="hint=!hint"> </app-slide-toggle-error>
     <!-- stackblitz -->
   </div>
+
+
+  <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
+  <jps-multi-datepicker
+  formControlName="year"
+  tabindex="-1"
+  mode="YEAR"
+  label="Choose a year"
+  [(ngModel)]="chosenYearDate"
+  [max]="2021"
+></jps-multi-datepicker><br/>
+{{ chosenYearDate }}
+</div>
+
+
 
   <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
     <mat-label>Utilisateurs </mat-label>
     <mat-select formControlName="id_utilisateur" name="utilisateur">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.value">
-        ID : {{utilisateur.value}} NOM : {{utilisateur.viewValue}} 
+        ID : {{utilisateur.value}} NOM : {{utilisateur.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-   
-    
- 
+
+
+
 
 
 
@@ -36,52 +56,15 @@
 
   </mat-form-field>
 
-  <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);"> 
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1"> Mois: </mat-radio-button>
-      <mat-radio-button value="2"> Semaine: </mat-radio-button>
-    </mat-radio-group>
-  </div>
 
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="dated">
-    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-    <mat-datepicker #dp
-                    startView="multi-year"
-                    (yearSelected)="chosenYearHandler($event)"
-                    (monthSelected)="chosenMonthHandler($event, dp)"
-                    panelClass="example-month-picker">
-    </mat-datepicker>
-  </mat-form-field>
 
 
   <!-- BEGINNING Datepicker Format -->
-   
 
-  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
-    <mat-label>Annee et mois</mat-label>
-    <input matInput 
-      [matDatepicker]="picker" 
-      formControlName="annee_mois" 
-      (ngModelChange)="modelChanged($event)" required>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker 
-      #picker 
-      disabled="false"
-      startView="multi-year">
-  </mat-datepicker>
 
-    <mat-hint *ngIf="hint" class="hint-error">
-      La valeur doit être en format numérique YYYY.
-    </mat-hint>
 
-    <mat-hint *ngIf="!hint" class="hint-error">
-      Annee et mois.
-    </mat-hint>
 
-  </mat-form-field>
-   
   <!-- END Datepicker Format -->
 
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
@@ -91,7 +74,7 @@
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);"></div>
 
 
-  
+
   <app-buttons-test-clear
     [form]="form"
     [formApi]="getValueFromInputApi()">

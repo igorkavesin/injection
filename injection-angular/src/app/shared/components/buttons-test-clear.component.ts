@@ -36,7 +36,7 @@ export class ButtonsTestClearComponent implements OnInit {
   public loading: boolean = false;
   public path: string | undefined;
 
-  constructor(public d: SimpleDialogComponent, public req: RequestService ) { 
+  constructor(public d: SimpleDialogComponent, public req: RequestService ) {
     if(true) {
       // this.loading = true;
       // this.d.openWindow("Bloqué par valeur 9");
@@ -64,6 +64,7 @@ export class ButtonsTestClearComponent implements OnInit {
 
   public btnClear(): void {
     this.form.reset();
+
   }
 
 }

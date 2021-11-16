@@ -22,12 +22,18 @@ import { ProgressBarComponent } from './shared/components/progress-bar.component
 import { SlideToggleErrorComponent } from './shared/components/slide-toggle-error.component';
 import { SimpleDialogComponent } from './shared/components/simple-dialog.component';
 import { RequestService } from './shared/services/request.service';
-import {MatRadioModule} from '@angular/material/radio'; 
- 
+import {MatRadioModule} from '@angular/material/radio';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MultiDatepickerModule } from './multidatepicker/multidatepicker.module';
+
+
+
+
 registerLocaleData(localeFr, 'fr-FR');
 
 
@@ -59,7 +65,10 @@ registerLocaleData(localeFr, 'fr-FR');
     ReactiveFormsModule,
     HttpClientModule,
     MatRadioModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MultiDatepickerModule
+
   ],
   providers: [
     RequestService,

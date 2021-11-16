@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, VERSION } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
 import { FormGroup, FormControl } from '@angular/forms';
 import { AppDateYearAdapter, APP_MODE_FORMATS_YEAR } from 'src/app/shared/format-datepicker';
 import { IForm } from '../../../shared/interface/iform';
@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDatepicker } from '@angular/material/datepicker';
 //import { Moment } from 'moment';
 
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment';
@@ -54,12 +55,26 @@ interface Utilisateurs {
 // { provide: MAT_DATE_FORMATS, useValue: APP_MODE_FORMATS_YEAR_MONTH },
 export class VerrouillageDesPaiementsComponent implements OnInit {
 
+
+  version = VERSION;
+  date = new Date();
+  chosenYearDate: Date | undefined;
+  chosenMonthDate: Date = new Date(2020,0,1);
+  chosenSemesterDate: Date | undefined;
+  chosenWeekDate: Date | undefined;
+  chosenDate: Date | undefined;
+  monthInputCtrl: FormControl = new FormControl(new Date(2020,0,1));
+
+  visible = true;
+
+
+
   public err_annee: string ="";
-  public date: string | undefined;
+
   @Input() public hint: boolean | undefined;
 
   @ViewChild('picker') datePickerElement = MatDatepicker;
-  
+
 
   utilisateurs: Utilisateurs[] = [
     {value: '3051', viewValue: 'olivier'},
@@ -88,7 +103,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.datePickerElement) 
+    console.log(this.datePickerElement)
     setTimeout(() => { },1000)
   }
 
@@ -100,7 +115,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   }
 
   chosenYearHandler(normalizedYear: Moment) {
-  
+
     const ctrlValue = this.dated.value;
     ctrlValue.year(normalizedYear.year());
     this.dated.setValue(ctrlValue);
@@ -108,7 +123,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
 
   chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.dated.value;
-     
+
     ctrlValue.month(normalizedMonth.month());
     this.dated.setValue(ctrlValue);
     datepicker.close();
@@ -117,8 +132,8 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog
-  ) { 
-     
+  ) {
+
   }
 
   public getValueFromInputApi(): IForm {
@@ -128,7 +143,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
       }
     };
   }
-  
+
   public getValueFromInput(name: string): string {
     console.log('=====================>', this.form.controls.annee_mois.value);
     return 'ERROR';
