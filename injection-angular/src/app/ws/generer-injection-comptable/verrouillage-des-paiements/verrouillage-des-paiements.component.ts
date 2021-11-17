@@ -1,12 +1,10 @@
 import { Component, OnInit, Input, ViewChild, VERSION } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-
 import { FormGroup, FormControl } from '@angular/forms';
 import { AppDateYearAdapter, APP_MODE_FORMATS_YEAR } from 'src/app/shared/format-datepicker';
 import { IForm } from '../../../shared/interface/iform';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDatepicker } from '@angular/material/datepicker';
-//import { Moment } from 'moment';
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -28,7 +26,6 @@ export const MY_FORMATS = {
   },
 };
 
-
 interface Utilisateurs {
   value: string;
   viewValue: string;
@@ -44,8 +41,7 @@ interface Utilisateurs {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
 
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
     { provide: DateAdapter, useClass: AppDateYearAdapter },
     { provide: MAT_DATE_FORMATS, useValue: APP_MODE_FORMATS_YEAR },
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
@@ -86,7 +82,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
 
   public form = this.fb.group({
     utilisateur: [this.utilisateurs[1]],
-    id_utilisateur: [null, [Validators.required, Validators.pattern('^[0-9]{2,10}')]],
+    id_utilisateur: [null, [Validators.required, Validators.pattern('^[0-9]{2, 10}')]],
     annee_mois: [null, [Validators.required ]],
     date: [moment()],
     provisoire: [null]
@@ -95,10 +91,8 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   autoRenew = new FormControl();
   onChange() {
     console.log(this.autoRenew.value + " " + this.form.controls.annee.value );
-
     if( this.autoRenew.value || this.form.controls.annee.value === 'null' ) {
-      this.err_annee = ' ooooo ';
-
+      this.err_annee = ' onChange => test ';
     }
   }
 
@@ -110,31 +104,14 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   modelChanged(date: string) {
     var theDate = new Date(Date.parse(date));
     const localDate = theDate.toLocaleString().split(" ");
-
     console.log(localDate);
   }
 
-  chosenYearHandler(normalizedYear: Moment) {
-
-    const ctrlValue = this.dated.value;
-    ctrlValue.year(normalizedYear.year());
-    this.dated.setValue(ctrlValue);
-  }
-
-  chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.dated.value;
-
-    ctrlValue.month(normalizedMonth.month());
-    this.dated.setValue(ctrlValue);
-    datepicker.close();
-  }
   // https://stackblitz.com/edit/angular-mulitdate-picker-demo
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog
-  ) {
-
-  }
+  ) { }
 
   public getValueFromInputApi(): IForm {
     return {
@@ -145,7 +122,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   }
 
   public getValueFromInput(name: string): string {
-    console.log('=====================>', this.form.controls.annee_mois.value);
+    console.log('getValueFromInput =>', this.form.controls.annee_mois.value);
     return 'ERROR';
   }
 

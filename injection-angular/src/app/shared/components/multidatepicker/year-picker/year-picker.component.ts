@@ -1,31 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  forwardRef,
-  Input,
-  ViewChild,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormControl,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-
+import { AfterViewInit, Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-
-
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatDatepicker } from '@angular/material/datepicker';
-
-
-
-// Depending on whether rollup is used, moment needs to be imported differently.
-// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
-// syntax. However, rollup creates a synthetic default module and we thus need to import it using
-// the `default as` syntax.
 import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment, Moment } from 'moment';
 import { MultiDatepickerComponent } from 'src/app/shared/multidatepicker/multidatepicker.component';
 
@@ -62,11 +40,11 @@ export const YEAR_MODE_FORMATS = {
     },
   ],
 })
+
 export class YearPickerComponent
   implements ControlValueAccessor, AfterViewInit {
   /** custom form-field class */
   @Input() jpCustomFormFieldClass = '';
-
 
   /** Component label */
   @Input() label = '';

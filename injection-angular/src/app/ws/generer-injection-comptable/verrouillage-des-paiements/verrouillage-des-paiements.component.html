@@ -1,27 +1,49 @@
 <form [formGroup]="form">
 
-
-
-
-
-
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
     <app-slide-toggle-error (eventSlideToggle)="hint=!hint"> </app-slide-toggle-error>
     <!-- stackblitz -->
   </div>
 
-
+  <!-- BEGINNING PICKER DATE -->
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
-  <jps-multi-datepicker
-  formControlName="year"
-  tabindex="-1"
-  mode="YEAR"
-  label="Choose a year"
-  [(ngModel)]="chosenYearDate"
-  [max]="2021"
-></jps-multi-datepicker><br/>
-{{ chosenYearDate }}
-</div>
+    <jps-multi-datepicker
+      formControlName="year"
+      tabindex="-1"
+      mode="YEAR"
+      label="Annee"
+      [(ngModel)]="chosenYearDate"
+      [max]="2021"></jps-multi-datepicker>
+    {{ chosenYearDate }}
+  </div>
+  <!-- END PICKER DATE -->
+
+    <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
+      <mat-label> Saison </mat-label>
+      <mat-select formControlName="select_saison" name="select_saison" required>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.value">
+
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
+      <mat-label> Mois | semaine  </mat-label>
+      <input matInput placeholder="NUMBER" formControlName="saison" required matTooltip=" ">
+      <mat-icon matSuffix>cloud_queue</mat-icon>
+
+
+      <mat-hint *ngIf="hint" class="hint-error">
+          La valeur doit être en format numérique.
+      </mat-hint>
+
+      <mat-hint *ngIf="!hint" class="hint-error">
+        Mois | semaine
+      </mat-hint>
+
+    </mat-form-field>
+
 
 
 
@@ -34,31 +56,6 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-
-
-
-
-
-
-  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
-    <mat-label>ID utilisateur:  </mat-label>
-    <input matInput placeholder="NUMBER" formControlName="id_utilisateur" required matTooltip="ID utilisateur">
-    <mat-icon matSuffix>perm_identity</mat-icon>
-
-    <mat-hint *ngIf="hint" class="hint-error">
-        La valeur doit être en format numérique.
-    </mat-hint>
-
-    <mat-hint *ngIf="!hint" class="hint-error">
-      ID utilisateur.
-    </mat-hint>
-
-  </mat-form-field>
-
-
-
-
 
   <!-- BEGINNING Datepicker Format -->
 

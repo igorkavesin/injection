@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,7 +8,6 @@ import { VerrouillageDesPaiementsComponent } from './ws/generer-injection-compta
 import { NgComponent } from './ng/ng.component';
 import { HomeComponent } from './home/home.component';
 import { MatSliderModule } from '@angular/material/slider';
-
 import { MaterialModule } from './material/material.module';
 import { CommonModule, JsonPipe, HashLocationStrategy, registerLocaleData  } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -23,21 +21,12 @@ import { SlideToggleErrorComponent } from './shared/components/slide-toggle-erro
 import { SimpleDialogComponent } from './shared/components/simple-dialog.component';
 import { RequestService } from './shared/services/request.service';
 import {MatRadioModule} from '@angular/material/radio';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MultiDatepickerModule } from './multidatepicker/multidatepicker.module';
-
-
-
-
 registerLocaleData(localeFr, 'fr-FR');
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +57,6 @@ registerLocaleData(localeFr, 'fr-FR');
     MatDatepickerModule,
     MatNativeDateModule,
     MultiDatepickerModule
-
   ],
   providers: [
     RequestService,
