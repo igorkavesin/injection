@@ -26,7 +26,7 @@ export const YEAR_MODE_FORMATS = {
   templateUrl: './year-picker.component.html',
   styleUrls: [],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'pt' },
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,

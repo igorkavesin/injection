@@ -3,9 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { IForm } from '../interface/iform';
 import { RequestService } from '../services/request.service';
 import { SimpleDialogComponent } from './simple-dialog.component';
-
-
-
 @Component({
   selector: 'app-buttons-test-clear',
   providers: [SimpleDialogComponent],
@@ -15,7 +12,7 @@ import { SimpleDialogComponent } from './simple-dialog.component';
       (click)="btnSend($event)"
       class="submit-button"
       #send
-      [disabled]="form.invalid">
+      [disabled]="form.invalid || btnTest">
       <mat-icon> mail_outline</mat-icon> Tester
     </button>
 
@@ -26,7 +23,7 @@ import { SimpleDialogComponent } from './simple-dialog.component';
     </button>`,
 })
 export class ButtonsTestClearComponent implements OnInit {
-
+  @Input() public btnTest: any ;
   @Input() public btnHiteClear: boolean = false;
   @Input() public btnName: string | undefined;
   @Input() public form: FormGroup = new FormGroup({});
@@ -37,6 +34,7 @@ export class ButtonsTestClearComponent implements OnInit {
   public path: string | undefined;
 
   constructor(public d: SimpleDialogComponent, public req: RequestService ) {
+     
     if(true) {
       // this.loading = true;
       // this.d.openWindow("Bloqué par valeur 9");
@@ -47,24 +45,24 @@ export class ButtonsTestClearComponent implements OnInit {
   }
 
   private doRequest(): void {
-    alert(" doRequest ");
-
     this.loading = false;
   }
 
-  public btnSend(event : MouseEvent) {
+  public btnSend(event : MouseEvent): void {
     this.path = this.formApi?.callValueFromInput('');
-
     console.log(" this.path =>",  this.path );
-    this.form.disable();
+    this.form.disabled ;
     (event.target as HTMLButtonElement).disabled = true;
     // this.d.openWindow("Attendez s'il vous plait ");
     this.loading = true;
+    this.btnTest = true;
   }
 
   public btnClear(): void {
     this.form.reset();
-
+    this.btnTest = null;
+    this.loading = false;
+    this.form.enable();
   }
 
 }

@@ -9,72 +9,96 @@
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
     <jps-multi-datepicker
       formControlName="year"
-      tabindex="-1"
       mode="YEAR"
       label="Annee"
-      [(ngModel)]="chosenYearDate"
-      [max]="2021"></jps-multi-datepicker>
-    {{ chosenYearDate }}
+      [max]="2021" 
+      matTooltip="Annee">
+    </jps-multi-datepicker>   
   </div>
   <!-- END PICKER DATE -->
 
-    <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
-      <mat-label> Saison </mat-label>
-      <mat-select formControlName="select_saison" name="select_saison" required>
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.value">
-
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
-      <mat-label> Mois | semaine  </mat-label>
-      <input matInput placeholder="NUMBER" formControlName="saison" required matTooltip=" ">
-      <mat-icon matSuffix>cloud_queue</mat-icon>
-
-
-      <mat-hint *ngIf="hint" class="hint-error">
-          La valeur doit être en format numérique.
-      </mat-hint>
-
-      <mat-hint *ngIf="!hint" class="hint-error">
-        Mois | semaine
-      </mat-hint>
-
-    </mat-form-field>
-
-
-
-
+  <!-- BEGINNING SELECT MOIS, SEMAINE -->
   <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
-    <mat-label>Utilisateurs </mat-label>
-    <mat-select formControlName="id_utilisateur" name="utilisateur">
+    <mat-label> {{selected}} souhaitée </mat-label>
+    <mat-select 
+      formControlName="select_saison"
+      name="select_saison" 
+      required [(value)]="selected"
+      matTooltip="Mois | Semaine souhaitée">
+      <mat-option *ngFor="let ssaison of ssaisons" [value]="ssaison.value">
+        {{ssaison.value}}
+      </mat-option>
+    </mat-select>
+
+    <mat-hint *ngIf="hint" class="hint-error">
+        La valeur doit être en format string.
+    </mat-hint>
+
+    <mat-hint *ngIf="!hint" class="hint-error">
+      Mois | Semaine souhaitée
+    </mat-hint>
+  </mat-form-field>
+  <!-- END SELECT MOIS, SEMAINE -->
+
+  <!-- BEGINNNING INPUT MOIS, SEMAINE -->
+  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
+    <mat-label>
+      <span *ngFor="let ssaison of ssaisons; let indexOfelement=index;">
+        <span *ngIf="selected == ssaisons[indexOfelement].value"> 
+          {{ssaisons[indexOfelement].value}} 
+        </span>
+      </span>
+    </mat-label>
+    <input matInput placeholder="NUMBER" formControlName="isaison" required matTooltip="Mois | semaine">
+    <mat-icon matSuffix>cloud_queue</mat-icon>
+    
+    <mat-hint *ngIf="hint" class="hint-error">
+      La valeur doit être en format numérique.
+    </mat-hint>
+
+    <mat-hint *ngIf="!hint" class="hint-error">
+      Mois | semaine
+    </mat-hint>
+  </mat-form-field>
+  <!-- END INPUT MOIS, SEMAINE -->
+
+  <!-- BEGINNING INPUT UTILISATEUR -->
+  <mat-form-field fxFlex appearance="legacy" style="padding: 10px;margin-left: 10px;width: 40%;">
+    <mat-label> Utilisateurs </mat-label>
+    <mat-select formControlName="sutilisateur" name="utilisateur" required matTooltip="ID Utilisateurs">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.value">
         ID : {{utilisateur.value}} NOM : {{utilisateur.viewValue}}
       </mat-option>
     </mat-select>
+
+    <mat-hint *ngIf="hint" class="hint-error">
+      La valeur doit être en format numérique.
+    </mat-hint>
+
+    <mat-hint *ngIf="!hint" class="hint-error">
+      Id utilisateur
+    </mat-hint>
   </mat-form-field>
+  <!-- END INPUT UTILISATEUR -->
 
-  <!-- BEGINNING Datepicker Format -->
-
-
-
-
-  <!-- END Datepicker Format -->
-
+  <!-- BEGINNING CHECKBOX PROVISOIRE -->
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);">
-    <mat-icon matSuffix>swap_horiz</mat-icon>  Provisoire: <mat-checkbox formControlName="provisoire"> </mat-checkbox>
+    <mat-icon matSuffix>swap_horiz</mat-icon>
+    Provisoire ou définitive (maj de SSC_PAIEMENT et SSC_DEJA_PAIE)
+    <mat-checkbox formControlName="provisoire"> </mat-checkbox>
   </div>
+  <!-- END CHECKBOX -->
 
   <div style="padding: 10px;margin-left: 10px;width: 40%; color: rgba(0,0,0,.54);"></div>
 
-
-
+  <!-- BEGINNING BUTTON TESTER, EFFACER -->
+   
   <app-buttons-test-clear
     [form]="form"
-    [formApi]="getValueFromInputApi()">
+    [formApi]="getValueFromInputApi()" #btn >
   </app-buttons-test-clear>
+    {{ btn.btnTest }}
+  <!-- END BUTTON TESTER, EFFACER -->
 
 </form>

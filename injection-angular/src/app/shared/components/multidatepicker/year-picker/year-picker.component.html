@@ -13,10 +13,10 @@
   <mat-icon matSuffix>calendar_today</mat-icon>
 </mat-form-field>
 
-<mat-datepicker #datepicker
+ <mat-datepicker #datepicker
   (closed)="_takeFocusAway(datepicker)"
   (yearSelected)="_yearSelectedHandler($event, datepicker)"
   [touchUi]="touchUi"
   panelClass="jp-year-picker"
-  startView="multi-year">
+  startView="multi-year" required>
 </mat-datepicker>
