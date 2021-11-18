@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Input, VERSION } from '@angular/core';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IForm } from '../../../shared/interface/iform';
 import { MatDialog } from '@angular/material/dialog';
 interface iselect {
@@ -17,6 +17,8 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
 
   @Input() public hint: boolean | undefined;
   @Input() public btnTest: boolean | undefined;
+
+  chosenYearDate: Date = new Date(2021, 0, 1);
   
   utilisateurs: iselect[] = [
     {value: '3051', viewValue: 'olivier'},
@@ -30,7 +32,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   ];
 
   selected = this.ssaisons[0].value; 
-  
+
  // [Validators.required, Validators.pattern('^[0-9]{2, 10}')]
 
   public form = this.fb.group({

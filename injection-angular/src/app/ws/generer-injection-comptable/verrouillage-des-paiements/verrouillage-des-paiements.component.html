@@ -12,9 +12,11 @@
       mode="YEAR"
       label="Annee"
       [max]="2021" 
-      matTooltip="Annee">
+      matTooltip="Annee"
+      [(ngModel)]="chosenYearDate">
     </jps-multi-datepicker>   
   </div>
+  <span style="display:none;"> {{chosenYearDate |  date:"yyyy" }}</span>
   <!-- END PICKER DATE -->
 
   <!-- BEGINNING SELECT MOIS, SEMAINE -->
