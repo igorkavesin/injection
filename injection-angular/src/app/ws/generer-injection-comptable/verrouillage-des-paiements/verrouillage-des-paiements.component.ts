@@ -87,8 +87,9 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   }
   public getVal( s: any): string {
     
-  
-    return JSON.stringify(s !== null ? s[0] : 'null');
+    let r = s !== null ? s[0] : 'null';
+    
+    return JSON.stringify(r);
   }
 
 }
