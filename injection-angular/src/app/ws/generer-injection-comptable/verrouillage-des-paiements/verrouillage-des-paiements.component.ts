@@ -19,7 +19,7 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
   @Input() public btnTest: boolean | undefined;
 
   chosenYearDate: Date = new Date(2021, 0, 1);
-  
+
   utilisateurs: iselect[] = [
     {value: '3051', viewValue: 'olivier'},
     {value: '2364', viewValue: 'mathie'},
@@ -72,8 +72,23 @@ export class VerrouillageDesPaiementsComponent implements OnInit {
 
   public getValueFromInput(name: string): string {
     this.form.disable();
-    console.log('getValueFromInput =>', this.form.controls.year);
+    let year = this.form.controls.year.value;
+    let res = String(year);
+    // Fri Jan 01 199d9d 00:00:00 GMT+0100 (heure normale d’Europe centrale)
+    let mat = res.match(/\s[\d]{4}\s/);
+    
+    alert(mat);
+
+    let v = this.getVal( (mat ) ) ;
+
+    console.log('getValueFromInput =>', v);
+    console.log('getValueFromInput =>', this.form.controls.year.value);
     return 'ERROR';
+  }
+  public getVal( s: any): string {
+    
+  
+    return JSON.stringify(s !== null ? s[0] : 'null');
   }
 
 }

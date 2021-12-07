@@ -13,10 +13,10 @@
       label="Annee"
       [max]="2021" 
       matTooltip="Annee"
-      [(ngModel)]="chosenYearDate">
+      [(ngModel)]= "chosenYearDate">
     </jps-multi-datepicker>   
   </div>
-  <span style="display:none;"> {{chosenYearDate |  date:"yyyy" }}</span>
+  
   <!-- END PICKER DATE -->
 
   <!-- BEGINNING SELECT MOIS, SEMAINE -->
